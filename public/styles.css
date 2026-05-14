@@ -21,6 +21,7 @@
 html, body {
     overflow-x: hidden;
     max-width: 100vw;
+    touch-action: manipulation;
 }
 html {
     scroll-behavior: smooth;
