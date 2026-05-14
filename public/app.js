@@ -1,55 +1,61 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Lucide icons
-  if (typeof lucide !== 'undefined') {
+    // Initialize Lucide Icons
     lucide.createIcons();
-  }
-
-  // Sticky header — add scrolled class once user scrolls past 20px
-  const header = document.querySelector('header');
-  if (header) {
-    const onScroll = () => {
-      header.classList.toggle('scrolled', window.scrollY > 20);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-  }
-
-  // Scroll reveal — elements with class "reveal" fade-up into view
-  const revealEls = document.querySelectorAll('.reveal');
-  if (revealEls.length > 0) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
+    // Sticky Header
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
-      },
-      { threshold: 0.1 }
-    );
-    revealEls.forEach((el, i) => {
-      el.style.setProperty('--stagger-index', i);
-      observer.observe(el);
+        // Close menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    }
+    // Smooth Scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
-  }
-
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener('click', (e) => {
-      const target = document.querySelector(link.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
+    // Scroll Reveal Animation
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    revealElements.forEach(el => {
+        observer.observe(el);
     });
-  });
-
-  // Mobile nav toggle — expects a button with data-nav-toggle and a nav with data-nav-menu
-  const navToggle = document.querySelector('[data-nav-toggle]');
-  const navMenu = document.querySelector('[data-nav-menu]');
-  if (navToggle && navMenu) {
-    navToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('open');
+    // Staggered Animation
+    const staggerContainers = document.querySelectorAll('.stagger');
+    staggerContainers.forEach(container => {
+        const children = container.children;
+        for (let i = 0; i < children.length; i++) {
+            children[i].style.setProperty('--stagger-index', i);
+        }
     });
-  }
 });

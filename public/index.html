@@ -1,37 +1,209 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Minimal JS Template</title>
-    <link rel="stylesheet" href="/styles.css" />
-  </head>
-  <body>
-    <main class="container">
-      <h1>Minimal JS Template</h1>
-      <p>This is a barebones single-page app served by Cloudflare Workers.</p>
-
-      <section class="card">
-        <p>Try the API health check:</p>
-        <button id="btn-health">Ping /api/health</button>
-        <pre id="result" aria-live="polite"></pre>
-      </section>
-
-      <section class="card">
-        <h2>What’s included</h2>
-        <ul>
-          <li>Static assets: HTML, CSS, and JS</li>
-          <li>Cloudflare Worker routes under <code>/api/*</code></li>
-          <li>No frameworks, bundlers, or build steps</li>
-        </ul>
-      </section>
-
-      <footer>
-        <small>Built for simple one-page apps and quick prototypes.</small>
-      </footer>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chic & Shears Studio | Abingdon Hairdresser</title>
+    <meta name="description" content="Chic & Shears Studio is a stylish and modern hairdressing salon in Abingdon, Oxford, offering a full range of hair services.">
+    <meta name="theme-color" content="#E6B8A2">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-primary text-primary antialiased">
+    <div class="ambient-glow"></div>
+    <header class="header glass sticky top-0 z-50">
+        <div class="container mx-auto flex items-center justify-between p-4">
+            <a href="#home" class="text-xl font-bold" style="font-family: 'Playfair Display', serif;">Chic & Shears</a>
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#testimonials" class="nav-link">Testimonials</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <a href="#contact" class="btn btn-sm hidden md:inline-flex">Book Now</a>
+            <button id="mobile-menu-btn" class="md:hidden">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-secondary/80 backdrop-blur-md">
+            <a href="#services" class="block py-2 px-4 text-center nav-link">Services</a>
+            <a href="#gallery" class="block py-2 px-4 text-center nav-link">Gallery</a>
+            <a href="#about" class="block py-2 px-4 text-center nav-link">About</a>
+            <a href="#testimonials" class="block py-2 px-4 text-center nav-link">Testimonials</a>
+            <a href="#contact" class="block py-2 px-4 text-center nav-link">Contact</a>
+            <div class="p-4"><a href="#contact" class="btn w-full">Book Now</a></div>
+        </div>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero min-h-screen">
+            <div class="hero-content text-center reveal">
+                <h1 class="gradient-text text-5xl md:text-7xl font-bold" style="font-family: 'Playfair Display', serif;">Crafting Confidence, One Strand at a Time.</h1>
+                <p class="mt-4 text-lg md:text-xl text-secondary max-w-2xl mx-auto">
+                    Visit Abingdon's premier hair studio for a transformative experience. We specialize in modern cuts, vibrant colour, and personalized styling.
+                </p>
+                <div class="hero-actions mt-8">
+                    <a href="#contact" class="btn btn-lg">Book An Appointment</a>
+                </div>
+            </div>
+        </section>
+        <!-- Services Section -->
+        <section id="services" class="section">
+            <div class="container mx-auto text-center">
+                <h2 class="section-title reveal">Our Services</h2>
+                <p class="section-subtitle reveal">Tailored to perfection, just for you.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12 stagger">
+                    <div class="card glass hover-lift">
+                        <i data-lucide="scissors" class="w-12 h-12 text-accent mx-auto mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Cut & Style</h3>
+                        <p class="text-muted">Women's, men's, and children's precision haircuts and professional styling.</p>
+                        <p class="mt-4 font-bold text-lg">From £45</p>
+                    </div>
+                    <div class="card glass hover-lift">
+                        <i data-lucide="paintbrush" class="w-12 h-12 text-accent mx-auto mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Colouring</h3>
+                        <p class="text-muted">From full-head colour to root touch-ups using premium products.</p>
+                        <p class="mt-4 font-bold text-lg">From £80</p>
+                    </div>
+                    <div class="card glass hover-lift">
+                        <i data-lucide="sparkles" class="w-12 h-12 text-accent mx-auto mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Balayage</h3>
+                        <p class="text-muted">Achieve a natural, sun-kissed look with our expert balayage technique.</p>
+                        <p class="mt-4 font-bold text-lg">From £120</p>
+                    </div>
+                    <div class="card glass hover-lift">
+                        <i data-lucide="gem" class="w-12 h-12 text-accent mx-auto mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Bridal Hair</h3>
+                        <p class="text-muted">Elegant and timeless hairstyles for your special day. Trials available.</p>
+                        <p class="mt-4 font-bold text-lg">By Consultation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Gallery Section -->
+        <section id="gallery" class="section section-alt">
+            <div class="container mx-auto text-center">
+                <h2 class="section-title reveal">Our Work</h2>
+                <p class="section-subtitle reveal">A glimpse into our artistry and passion.</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-12 stagger">
+                    <img src="https://images.unsplash.com/photo-1595861245039-b21a31536f9a?q=80&w=600&h=600&fit=crop" alt="Blonde balayage hairstyle" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1560942485-b1a32a67936d?q=80&w=600&h=600&fit=crop" alt="Short brunette bob hairstyle" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1620551351410-3c093a0b411d?q=80&w=600&h=600&fit=crop" alt="Rich auburn coloured hair" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1605389449339-b883a4533a01?q=80&w=600&h=600&fit=crop" alt="Long wavy hairstyle" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1589758428802-37a6b4a3c14a?q=80&w=600&h=600&fit=crop" alt="Stylish men's haircut" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1599387737257-3c582ba1f288?q=80&w=600&h=600&fit=crop" alt="Close up of braided hair" class="gallery-img">
+                </div>
+            </div>
+        </section>
+        <!-- About Us Section -->
+        <section id="about" class="section">
+            <div class="container mx-auto text-center">
+                <h2 class="section-title reveal">Meet Our Stylists</h2>
+                <p class="section-subtitle reveal">The creative minds behind your perfect look.</p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-12 mt-12 stagger">
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1557053910-d9eadeed1c58?q=80&w=400&h=400&fit=crop" alt="Stylist Jessica" class="w-48 h-48 rounded-full mx-auto object-cover mb-4 shadow-lg">
+                        <h3 class="font-bold text-xl">Jessica</h3>
+                        <p class="text-accent font-semibold">Founder & Master Stylist</p>
+                        <p class="text-muted max-w-xs mx-auto mt-2">With over 15 years of experience, Jessica's passion is creating styles that perfectly match her clients' personalities.</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1619946794135-5bc917a27793?q=80&w=400&h=400&fit=crop" alt="Stylist Chloe" class="w-48 h-48 rounded-full mx-auto object-cover mb-4 shadow-lg">
+                        <h3 class="font-bold text-xl">Chloe</h3>
+                        <p class="text-accent font-semibold">Colour Specialist</p>
+                        <p class="text-muted max-w-xs mx-auto mt-2">Chloe is a true artist with colour, specializing in balayage and vibrant transformations that protect hair health.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="section section-alt">
+            <div class="container mx-auto text-center">
+                <h2 class="section-title reveal">What Our Clients Say</h2>
+                <p class="section-subtitle reveal">Your satisfaction is our greatest achievement.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 stagger">
+                    <div class="card glass text-left">
+                        <p class="text-muted">"Absolutely love my hair! Jessica listened to exactly what I wanted and delivered perfectly. The salon has such a relaxing vibe. I'll definitely be back!"</p>
+                        <div class="flex items-center mt-4">
+                            <i data-lucide="star" class="text-accent fill-current w-5 h-5"></i>
+                            <p class="ml-2 font-bold">- Sarah L.</p>
+                        </div>
+                    </div>
+                    <div class="card glass text-left">
+                        <p class="text-muted">"Chloe is a colour genius! She transformed my dull hair into a beautiful, natural-looking balayage. The best hairdresser in Abingdon, hands down."</p>
+                        <div class="flex items-center mt-4">
+                            <i data-lucide="star" class="text-accent fill-current w-5 h-5"></i>
+                            <p class="ml-2 font-bold">- Emily R.</p>
+                        </div>
+                    </div>
+                    <div class="card glass text-left">
+                        <p class="text-muted">"A wonderful experience from start to finish. Friendly staff, beautiful salon, and I walked out feeling like a new person. Highly recommend!"</p>
+                        <div class="flex items-center mt-4">
+                            <i data-lucide="star" class="text-accent fill-current w-5 h-5"></i>
+                            <p class="ml-2 font-bold">- Mark T.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container mx-auto">
+                <div class="cta-card glass glow reveal">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                        <div>
+                            <h2 class="section-title text-left !text-4xl">Ready for a New Look?</h2>
+                            <p class="text-secondary mt-4 mb-8">Get in touch to schedule your appointment. We can't wait to welcome you to our studio.</p>
+                            <div class="space-y-4">
+                                <a href="tel:01235-555-0101" class="flex items-center contact-link">
+                                    <i data-lucide="phone" class="w-5 h-5 mr-3"></i>
+                                    <span>01235 555 0101</span>
+                                </a>
+                                <a href="mailto:hello@chicandshears.com" class="flex items-center contact-link">
+                                    <i data-lucide="mail" class="w-5 h-5 mr-3"></i>
+                                    <span>hello@chicandshears.com</span>
+                                </a>
+                                <div class="flex items-start">
+                                    <i data-lucide="map-pin" class="w-5 h-5 mr-3 mt-1 shrink-0"></i>
+                                    <span>123 Ock Street, Abingdon, OX14 5DL</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="clock" class="w-5 h-5 mr-3 mt-1 shrink-0"></i>
+                                    <div class="text-secondary">
+                                        <strong>Opening Hours:</strong><br>
+                                        Tue - Fri: 9am - 6pm<br>
+                                        Sat: 9am - 4pm<br>
+                                        Sun - Mon: Closed
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="h-64 md:h-full w-full rounded-lg overflow-hidden">
+                           <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39934.19502782787!2d-1.321869851722831!3d51.67232233076136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876c5b592561341%3A0x296f5e7181c00a6c!2sAbingdon!5e0!3m2!1sen!2suk!4v1716556111000!5m2!1sen!2suk" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-
-    <script src="/app.js" defer></script>
-  </body>
-  </html>
-
+    <footer class="bg-bg-secondary py-6 text-center text-muted">
+        <p>&copy; 2024 Chic & Shears Studio. All Rights Reserved.</p>
+    </footer>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="app.js"></script>
+</body>
+</html>
