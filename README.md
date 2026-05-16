@@ -2,7 +2,7 @@
 
 Welcome to the **Chic & Shears** project repository! This is a modern, responsive static website designed to showcase a business, built for high performance and reliability on the Cloudflare platform.
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/bigocox1970/chic-shears-studio-landing-page)
 
 ## Description
 
@@ -88,7 +88,7 @@ This project is designed for seamless deployment to Cloudflare.
     ```
     This command will package and upload your `public` directory content to Cloudflare, making it accessible globally.
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/bigocox1970/chic-shears-studio-landing-page)
 
 ## Project Structure
 
