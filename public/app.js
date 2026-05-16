@@ -24,6 +24,34 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    // Theme Toggle Logic
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    const updateThemeIcon = (theme) => {
+        const icon = theme === 'dark' ? 'sun' : 'moon';
+        if (themeToggleBtn) {
+            themeToggleBtn.innerHTML = `<i data-lucide="${icon}" class="w-5 h-5"></i>`;
+            lucide.createIcons();
+        }
+    };
+    const toggleTheme = () => {
+        const html = document.documentElement;
+        const currentTheme = html.hasAttribute('data-theme') && html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        if (newTheme === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            html.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+        }
+        updateThemeIcon(newTheme);
+    };
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        // Initialize icon
+        const initialTheme = document.documentElement.hasAttribute('data-theme') ? 'dark' : 'light';
+        updateThemeIcon(initialTheme);
+    }
     // Smooth Scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
