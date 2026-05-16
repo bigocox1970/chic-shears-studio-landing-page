@@ -97,7 +97,7 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    background-image: url('https://app.rankbuilder.app/api/generated-images/undefined/hero.png');
+    background-image: url('https://app.rankbuilder.app/api/generated-images/a6c3fa58-6328-4356-b612-d4debf3349b1/hero.png?v=1778922486785');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -111,7 +111,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(51, 51, 51, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
 .hero-content {
